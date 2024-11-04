@@ -1,4 +1,4 @@
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -17,6 +17,18 @@ import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [];
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Casual Games - Play Free Online Casual Games" },
+    { name: "description", content: "Play the best free online casual games. Discover action, puzzle, racing, and strategy games. New games added daily!" },
+    { name: "keywords", content: "casual games, online games, free games, puzzle games, action games, racing games" },
+    { property: "og:title", content: "Casual Games - Play Free Online Casual Games" },
+    { property: "og:description", content: "Play the best free online casual games. Discover action, puzzle, racing, and strategy games. New games added daily!" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ];
+};
 
 function SearchResults() {
   const { searchResults, isSearching, searchTerm } = useSearch();
@@ -63,7 +75,11 @@ function Layout() {
   };
 
   return (
-    <html lang={language}>
+    <html
+      lang={language}
+      dir="ltr"
+      className={theme}
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

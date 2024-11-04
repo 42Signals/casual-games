@@ -1,4 +1,4 @@
-import { json, type LoaderFunction } from "@remix-run/node";
+import { json, type LoaderFunction, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useEffect } from "react";
 import { games } from "~/data/games";
@@ -13,6 +13,37 @@ export const loader: LoaderFunction = async ({ params }) => {
   return json({ game });
 };
 
+export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
+  if (!data?.game) {
+    return [
+      { title: "Game Not Found - Casual Games" },
+      { name: "description", content: "The requested game could not be found." }
+    ];
+  }
+
+  const { game } = data;
+  const canonicalUrl = `https://yourdomain.com${location.pathname}`;
+
+  return [
+    { title: game.metaTitle || `${game.title} - Play Online | Casual Games` },
+    { name: "description", content: game.metaDescription || game.description },
+    { name: "keywords", content: game.tags.join(", ") },
+    // OpenGraph tags
+    { property: "og:title", content: game.metaTitle || game.title },
+    { property: "og:description", content: game.metaDescription || game.description },
+    { property: "og:image", content: game.thumbnail },
+    { property: "og:type", content: "game" },
+    // Twitter tags
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: game.metaTitle || game.title },
+    { name: "twitter:description", content: game.metaDescription || game.description },
+    { name: "twitter:image", content: game.thumbnail },
+    { rel: "canonical", href: canonicalUrl },
+    { name: "language", content: "en" },
+    { property: "article:published_time", content: game.releaseDate },
+  ];
+};
+
 export default function GamePage() {
   const { game } = useLoaderData<typeof loader>();
   const { t, language } = useLanguage();
@@ -21,18 +52,100 @@ export default function GamePage() {
     addToRecentlyPlayed(game.id);
   }, [game.id]);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    name: game.title,
+    description: game.description,
+    image: game.thumbnail,
+    genre: game.category,
+    numberOfPlayers: game.tags.includes("Multiplayer") ? "MultiPlayer" : "SinglePlayer",
+    gameRating: `${game.rating}/5`,
+    datePublished: game.releaseDate,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: game.rating,
+      ratingCount: Math.floor(game.plays / 10), // Estimate rating count
+      bestRating: "5",
+      worstRating: "1"
+    },
+    interactionStatistic: {
+      "@type": "InteractionCounter",
+      interactionType: "https://schema.org/PlayGameAction",
+      userInteractionCount: game.plays
+    }
+  };
+
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://yourdomain.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": game.category,
+        "item": `https://yourdomain.com/category/${game.category.toLowerCase()}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": game.title,
+        "item": `https://yourdomain.com/games/${game.slug}`
+      }
+    ]
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Game Iframe Section */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData)
+        }}
+      />
+
+      <nav className="mb-4 text-sm" aria-label="Breadcrumb">
+        <ol className="flex items-center space-x-2">
+          <li>
+            <a href="/" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+              {t("home")}
+            </a>
+          </li>
+          <li className="text-gray-400">/</li>
+          <li>
+            <a href={`/category/${game.category.toLowerCase()}`} className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+              {game.category}
+            </a>
+          </li>
+          <li className="text-gray-400">/</li>
+          <li className="text-gray-700 dark:text-gray-300" aria-current="page">
+            {game.title}
+          </li>
+        </ol>
+      </nav>
+
       <div className="mb-8">
         <div
           className="aspect-video w-full rounded-xl bg-gray-900 shadow-2xl ring-1 ring-white/10 dark:ring-white/20"
           dangerouslySetInnerHTML={{ __html: game.iframeHtml }}
+          aria-label={game.alternativeText}
         />
       </div>
 
       <div className="grid gap-8 md:grid-cols-2">
-        {/* Game Instructions Section */}
         <section className="rounded-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-8 shadow-xl ring-1 ring-black/5 dark:ring-white/10 transition-transform hover:scale-[1.01]">
           <h2 className="mb-6 text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
             {t("how_to_play")}
@@ -54,7 +167,6 @@ export default function GamePage() {
           </div>
         </section>
 
-        {/* Game Details Section */}
         <section className="rounded-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-8 shadow-xl ring-1 ring-black/5 dark:ring-white/10 transition-transform hover:scale-[1.01]">
           <h2 className="mb-6 text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
             {t("game_details")}
