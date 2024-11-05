@@ -2,7 +2,7 @@ import { games } from "~/data/games";
 import type { LoaderFunction } from "@remix-run/node";
 
 export const loader: LoaderFunction = () => {
-  const baseUrl = "https://yourdomain.com";
+  const baseUrl = "https://casualgames.studio";
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

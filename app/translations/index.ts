@@ -65,6 +65,10 @@ export const translations = {
     "category_Board": "Board",
 
     "oops_game_over": "Oops! Game Over",
+
+    "featured_games": "Featured Games",
+
+    "hot_tag": "🔥 Hot",
   },
   es: {
     "popular_games": "Juegos Populares",
@@ -126,6 +130,10 @@ export const translations = {
     "check_new_games": "Descubre nuestras últimas novedades",
 
     "oops_game_over": "¡Ups! Fin del Juego",
+
+    "featured_games": "Juegos Destacados",
+
+    "hot_tag": "🔥 Destacado",
   },
   zh: {
     "popular_games": "热门游戏",
@@ -187,6 +195,10 @@ export const translations = {
     "check_new_games": "发现最新添加的游戏",
 
     "oops_game_over": "糟糕！游戏结束",
+
+    "featured_games": "精选游戏",
+
+    "hot_tag": "🔥 热门",
   },
   ja: {
     "popular_games": "人気ゲーム",
@@ -248,6 +260,10 @@ export const translations = {
     "check_new_games": "新着ゲームを見てみる",
 
     "oops_game_over": "おっと！ゲームオーバー",
+
+    "featured_games": "注目のゲーム",
+
+    "hot_tag": "🔥 人気",
   },
   fr: {
     // General
@@ -314,5 +330,9 @@ export const translations = {
     "check_new_games": "Découvrez nos dernières nouveautés",
 
     "oops_game_over": "Oups ! Partie Terminée",
+
+    "featured_games": "Jeux en vedette",
+
+    "hot_tag": "🔥 Tendance",
   },
 };

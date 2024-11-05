@@ -22,7 +22,7 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
   }
 
   const { game } = data;
-  const canonicalUrl = `https://yourdomain.com${location.pathname}`;
+  const canonicalUrl = `https://casualgames.studio${location.pathname}`;
 
   return [
     { title: game.metaTitle || `${game.title} - Play Online | Casual Games` },
@@ -84,19 +84,19 @@ export default function GamePage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://yourdomain.com"
+        "item": "https://casualgames.studio"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": game.category,
-        "item": `https://yourdomain.com/category/${game.category.toLowerCase()}`
+        "item": `https://casualgames.studio/categories/${game.category.toLowerCase()}`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": game.title,
-        "item": `https://yourdomain.com/games/${game.slug}`
+        "item": `https://casualgames.studio/games/${game.slug}`
       }
     ]
   };
@@ -117,16 +117,16 @@ export default function GamePage() {
         }}
       />
 
-      <nav className="mb-4 text-sm" aria-label="Breadcrumb">
+      <nav className="mb-4 text-base" aria-label="Breadcrumb">
         <ol className="flex items-center space-x-2">
-          <li>
+          {/* <li>
             <a href="/" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-              {t("home")}
+              {t("popular_games")}
             </a>
-          </li>
+          </li> */}
           <li className="text-gray-400">/</li>
           <li>
-            <a href={`/category/${game.category.toLowerCase()}`} className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+            <a href={`/categories/${game.category.toLowerCase()}`} className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
               {game.category}
             </a>
           </li>
@@ -139,7 +139,7 @@ export default function GamePage() {
 
       <div className="mb-8">
         <div
-          className="aspect-video w-full rounded-xl bg-gray-900 shadow-2xl ring-1 ring-white/10 dark:ring-white/20"
+          className="aspect-video w-full rounded-2xl bg-gray-900 shadow-5xl ring-1 ring-white/10 dark:ring-white/20"
           dangerouslySetInnerHTML={{ __html: game.iframeHtml }}
           aria-label={game.alternativeText}
         />

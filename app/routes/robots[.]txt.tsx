@@ -7,7 +7,7 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://casualgames.studio/sitemap.xml
 `;
 
   return new Response(robotsTxt, {

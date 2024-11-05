@@ -18,13 +18,18 @@ export function GameCard({ game }: { game: Game }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-        {game.is_new && (
-          <div className="absolute left-3 top-3 animate-pulse">
-            <span className="rounded-full bg-gradient-to-r from-green-400 to-emerald-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
+        <div className="absolute left-3 top-3 flex gap-2">
+          {game.is_new && (
+            <span className="rounded-full bg-gradient-to-r from-green-400 to-emerald-500 px-3 py-1 text-xs font-bold text-white shadow-lg animate-pulse">
               {t("new_tag")}
             </span>
-          </div>
-        )}
+          )}
+          {game.featured && (
+            <span className="rounded-full bg-gradient-to-r from-red-500 to-orange-500 px-3 py-1 text-xs font-bold text-white shadow-lg">
+              {t("hot_tag")}
+            </span>
+          )}
+        </div>
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <span className="rounded-full bg-white/90 dark:bg-gray-900/90 px-6 py-2 text-sm font-bold text-purple-600 dark:text-purple-400 shadow-lg transition-transform duration-300 group-hover:scale-110">

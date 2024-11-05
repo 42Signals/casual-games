@@ -100,7 +100,7 @@ export const games: Game[] = [
     featured: true,
     releaseDate: "2024-02-10",
     tags: ["Strategy", "Multiplayer", "Educational"],
-    is_new: true,
+    is_new: false,
     iframeHtml: `<iframe referrer-policy="no-referrer" allow="accelerometer; gyroscope;" data-allowed-origins="[&quot;https://app-263298.games.s3.yandex.net&quot;,&quot;https://playhop.com&quot;]" data-origin-src="https://app-263298.games.s3.yandex.net/263298/jro50mbzovsoj3i8olpvn8a2eyk0jane/index.html?sdk=%2Fsdk%2F_%2Fv2.8d94ac668f87220c58fb.js#origin=https%3A%2F%2Fplayhop.com&amp;app-id=263298&amp;device-type=desktop" id="game-frame" name="1730566527632583-7661974934431949651-rrbkroepgrismhua-BAL" src="https://app-263298.games.s3.yandex.net/263298/jro50mbzovsoj3i8olpvn8a2eyk0jane/index.html?sdk=%2Fsdk%2F_%2Fv2.8d94ac668f87220c58fb.js#origin=https%3A%2F%2Fplayhop.com&amp;app-id=263298&amp;device-type=desktop" width="100%" height="100%" frameborder="0" scrolling="none" allowfullscreen></iframe>`,
     metaTitle: "Strategy Empire - Build Your Empire and Conquer Territories | Casual Games",
     metaDescription: "Build your empire and conquer territories in this epic strategy game. Play for free now!",
