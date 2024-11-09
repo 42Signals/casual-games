@@ -46,8 +46,6 @@ export default function PopularGames() {
             <GameCard key={game.id} game={game} />
           ))}
         </div>
-
-        <BannerAd />
       </div>
     </div>
   );

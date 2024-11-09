@@ -43,8 +43,6 @@ export default function NewGames() {
             <GameCard key={game.id} game={game} />
           ))}
         </div>
-
-        <BannerAd />
       </div>
     </div>
   );
