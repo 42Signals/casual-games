@@ -155,11 +155,11 @@ function Layout() {
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as any)}
-                className="bg-black/10 text-white/90 rounded-lg px-3 py-1.5 outline-none hover:bg-black/20 transition-all duration-300"
+                className="bg-black/10 text-white/90 rounded-lg px-1.5 py-2 text-sm outline-none hover:bg-black/20 transition-all duration-300"
               >
-                <option value="en">🇺🇸 EN</option>
-                <option value="fr">🇫🇷 FR</option>
-                <option value="es">🇪🇸 ES</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="es">🇪🇸 Español</option>
                 <option value="zh">🇨🇳 中文</option>
                 <option value="ja">🇯🇵 日本語</option>
               </select>
