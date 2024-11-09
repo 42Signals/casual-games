@@ -131,7 +131,7 @@ export default function GamePage() {
             </a>
           </li>
           <li className="text-gray-400">/</li>
-          <li className="text-gray-700 dark:text-gray-300" aria-current="page">
+          <li className="text-gray-700 dark:text-gray-200" aria-current="page">
             {game.title}
           </li>
         </ol>
@@ -150,21 +150,10 @@ export default function GamePage() {
           <h2 className="mb-6 text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
             {t("how_to_play")}
           </h2>
-          <div className="prose prose-sm dark:prose-invert">
-            <ul className="list-none space-y-3">
-              {[
-                t("move_keys"),
-                t("jump_key"),
-                t("mouse_click"),
-                t("pause_key")
-              ].map((instruction) => (
-                <li key={instruction} className="flex items-center text-gray-700 dark:text-gray-300">
-                  <span className="mr-3 text-indigo-500 dark:text-indigo-400">→</span>
-                  {instruction}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div
+            className="prose prose-sm dark:prose-invert"
+            dangerouslySetInnerHTML={{ __html: game.how_to_play }}
+          />
         </section>
 
         <section className="rounded-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-8 shadow-xl ring-1 ring-black/5 dark:ring-white/10 transition-transform hover:scale-[1.01]">
@@ -180,6 +169,18 @@ export default function GamePage() {
             <div>
               <h3 className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("description")}</h3>
               <p className="mt-1 text-gray-700 dark:text-gray-300 leading-relaxed">{game.description}</p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("source")}</h3>
+              <a
+                href={game.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 text-indigo-600 dark:text-indigo-400 hover:underline inline-block"
+              >
+                {new URL(game.source).hostname}
+              </a>
             </div>
 
             <div>

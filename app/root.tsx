@@ -21,10 +21,10 @@ export const links: LinksFunction = () => [];
 export const meta: MetaFunction = () => {
   return [
     { title: "Casual Games - Play Free Online Casual Games" },
-    { name: "description", content: "Play the best free online casual games. Discover action, puzzle, racing, and strategy games. New games added daily!" },
-    { name: "keywords", content: "casual games, online games, free games, puzzle games, action games, racing games" },
+    { name: "description", content: "Play the best free online casual games. Discover Match 3, action, puzzle, racing, and strategy games. New games added daily!" },
+    { name: "keywords", content: "casual games, online games, free games, puzzle games, action games, racing games, match 3 games" },
     { property: "og:title", content: "Casual Games - Play Free Online Casual Games" },
-    { property: "og:description", content: "Play the best free online casual games. Discover action, puzzle, racing, and strategy games. New games added daily!" },
+    { property: "og:description", content: "Play the best free online casual games. Discover Match 3, action, puzzle, racing, and strategy games. New games added daily!" },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ];
@@ -85,6 +85,17 @@ function Layout() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+        <script dangerouslySetInnerHTML={{ __html: `
+          <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-RWEPYVZY69"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-RWEPYVZY69');
+          </script>
+        ` }} />
       </head>
       <body className="bg-gray-50 dark:bg-gray-900">
         <header className="fixed left-0 right-0 top-0 z-30 h-16 bg-gradient-to-r from-teal-500 via-emerald-500 to-cyan-500 shadow-md">

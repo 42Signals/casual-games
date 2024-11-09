@@ -5,12 +5,14 @@ export interface Game {
   category: string;
   rating: number;
   plays: number;
-  description: string;
-  featured: boolean;
-  releaseDate: string;
-  tags: string[];
   is_new: boolean;
+  featured: boolean;
+  description: string;
+  releaseDate: string;
+  source: string;
+  tags: string[];
   iframeHtml: string;
+  how_to_play: string;
   metaTitle?: string;
   metaDescription?: string;
   slug: string;
@@ -29,130 +31,174 @@ export interface Game {
 
 export const games: Game[] = [
   {
-    id: "space-adventure",
-    title: "Space Adventure",
-    thumbnail: "https://picsum.photos/seed/game1/400/300",
-    category: "Action",
-    rating: 4.5,
-    plays: 150000,
-    description: "Embark on an epic journey through the cosmos in this action-packed space shooter.",
-    featured: true,
-    releaseDate: "2024-01-15",
-    tags: ["Sci-fi", "Shooter", "Multiplayer"],
-    is_new: true,
-    iframeHtml: `<iframe src="https://www.crazygames.com/embed/basket-blitz" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>`,
-    metaTitle: "Space Adventure - Epic Space Shooter Game | Casual Games",
-    metaDescription: "Embark on an epic journey through the cosmos in this action-packed space shooter. Play for free now!",
-    slug: "space-adventure",
-    alternativeText: "Space Adventure game featuring a spaceship in deep space",
-  },
-  {
-    id: "puzzle-master",
-    title: "Puzzle Master",
-    thumbnail: "https://picsum.photos/seed/game2/400/300",
+    id: "worldguessr",
+    title: "WorldGuessr",
+    thumbnail: "https://images.crazygames.com/worldguessr_16x9/20241018082520/worldguessr_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     category: "Puzzle",
-    rating: 4.8,
-    plays: 200000,
-    description: "Challenge your mind with intricate puzzles and brain-teasers.",
-    featured: true,
-    releaseDate: "2024-02-01",
-    tags: ["Logic", "Educational", "Single-player"],
+    rating: 8.5,
+    plays: 32044,
     is_new: true,
-    iframeHtml: `<iframe id="if-fg-frame-" title="Blocksss" src="//html5.gamedistribution.com/24b45f0d68f84e3fba4c9215384a5b13/?gd_sdk_referrer_url=https%3A%2F%2Fwww.contezero.com%2Fgames%2Fpuzzle%2Fblocksss%2Fplay%3Afull" width="100%" height="100%" frameborder="0" scrolling="none" allowfullscreen=""></iframe>`,
-    metaTitle: "Puzzle Master - Intricate Puzzles and Brain-teasers | Casual Games",
-    metaDescription: "Challenge your mind with intricate puzzles and brain-teasers. Play for free now!",
-    slug: "puzzle-master",
-    alternativeText: "Puzzle Master game featuring a puzzle board",
-  },
-  {
-    id: "racing-pro",
-    title: "Racing Pro",
-    thumbnail: "https://picsum.photos/seed/game3/400/300",
-    category: "Racing",
-    rating: 4.2,
-    plays: 180000,
-    description: "Experience high-speed thrills in this realistic racing simulator.",
     featured: true,
-    releaseDate: "2024-01-20",
-    tags: ["Sports", "Multiplayer", "Simulation"],
-    is_new: false,
+    description: `
+    Discover the ultimate geography challenge with **Worldguessr** – the free, adventure-filled quiz game that lets you explore the world from your screen!
+    Each round, you’ll land in a random global location, armed with only the clues around you to figure out where you are.
+    From bustling cities to quiet country roads, each setting becomes an immersive puzzle waiting to be solved.
+    Sharpen your geography skills, dive into thrilling Street View adventures, and see how well you know our planet!
+    `,
+    releaseDate: "2024-10",
+    source: "https://www.crazygames.com/game/worldguessr",
+    tags: ["Casual", "Mobile", "3D", "Quiz", "With Friends", "Trivia", "Multiplayer"],
+
     iframeHtml: `<iframe
-      src="ttps://www.crazygames.com/embed/basket-blitz"
-      width="100%"
-      height="100%"
+      referrerpolicy="no-referrer"
+      src="https://www.crazygames.com/embed/worldguessr"
+      style="width: 100%; height: 100%;"
       frameborder="0"
       allowfullscreen
-      title="Racing Pro">
+      allow="gamepad *;"
+      title="WorldGuessr Free GeoGuessr">
     </iframe>`,
-    metaTitle: "Racing Pro - High-speed Thrills in Realistic Racing Simulator | Casual Games",
-    metaDescription: "Experience high-speed thrills in this realistic racing simulator. Play for free now!",
-    slug: "racing-pro",
-    alternativeText: "Racing Pro game featuring a race car",
+    how_to_play: `
+    <ol>
+      <li><strong>1. Start Exploring:</strong> Each game drops you at a random location on Google Maps. Look around and move through the area to gather clues about where you are.</li>
+
+      <li><strong>2. Find Clues:</strong> Use anything that can hint at your location – landmarks, street signs, coastlines, building styles, or even language on signs.</li>
+
+      <li><strong>3. Choose Maps:</strong> Explore hundreds of community-created maps based on regions or themes, from big cities to remote areas.</li>
+
+      <li><strong>4. Play Your Way:</strong> Play solo at your own pace or jump into multiplayer mode to compete with friends or players worldwide.</li>
+
+      <li><strong>5. Get a Hint (If Needed):</strong> Stuck? Use a hint to find out the general area, like the continent, to help guide your guess.</li>
+
+      <li><strong>6. Make Your Guess:</strong> Once you're confident, make your guess. Worldguessr will show how close (or far) you were from the correct spot, helping you improve your geography skills with each game!</li>
+    </ol>
+    <br />
+    <p>Enjoy the adventure as you uncover new places and refine your knowledge of the world!</p>
+    `,
+    metaTitle: "WorldGuessr Free GeoGuessr Online | Casual Games",
+    slug: "worldguessr",
+    alternativeText: "WorldGuessr Free GeoGuessr Online | Casual Games",
   },
   {
-    id: "strategy-empire",
-    title: "Strategy Empire",
-    thumbnail: "https://picsum.photos/seed/game4/400/300",
-    category: "Strategy",
-    rating: 4.7,
-    plays: 120000,
-    description: "Build your empire and conquer territories in this epic strategy game.",
+    id: "basket-blitz",
+    title: "Basket Blitz 2",
+    thumbnail: "https://images.crazygames.com/basket-blitz_16x9/20241031102002/basket-blitz_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
+    category: "Sports",
+    rating: 8.6,
+    plays: 8497,
+    is_new: true,
     featured: true,
-    releaseDate: "2024-02-10",
-    tags: ["Strategy", "Multiplayer", "Educational"],
-    is_new: false,
-    iframeHtml: `<iframe referrer-policy="no-referrer" allow="accelerometer; gyroscope;" data-allowed-origins="[&quot;https://app-263298.games.s3.yandex.net&quot;,&quot;https://playhop.com&quot;]" data-origin-src="https://app-263298.games.s3.yandex.net/263298/jro50mbzovsoj3i8olpvn8a2eyk0jane/index.html?sdk=%2Fsdk%2F_%2Fv2.8d94ac668f87220c58fb.js#origin=https%3A%2F%2Fplayhop.com&amp;app-id=263298&amp;device-type=desktop" id="game-frame" name="1730566527632583-7661974934431949651-rrbkroepgrismhua-BAL" src="https://app-263298.games.s3.yandex.net/263298/jro50mbzovsoj3i8olpvn8a2eyk0jane/index.html?sdk=%2Fsdk%2F_%2Fv2.8d94ac668f87220c58fb.js#origin=https%3A%2F%2Fplayhop.com&amp;app-id=263298&amp;device-type=desktop" width="100%" height="100%" frameborder="0" scrolling="none" allowfullscreen></iframe>`,
-    metaTitle: "Strategy Empire - Build Your Empire and Conquer Territories | Casual Games",
-    metaDescription: "Build your empire and conquer territories in this epic strategy game. Play for free now!",
-    slug: "strategy-empire",
-    alternativeText: "Strategy Empire game featuring a map of the world",
-  },
-  {
-    id: "zombie-survival",
-    title: "Zombie Survival",
-    thumbnail: "https://picsum.photos/seed/game5/400/300",
-    category: "Action",
-    rating: 4.3,
-    plays: 90000,
-    description: "Survive the zombie apocalypse in this intense action game.",
-    featured: false,
-    releaseDate: "2024-02-15",
-    tags: ["Action", "Shooter", "Single-player"],
-    is_new: false,
+    description: `
+    Basket Blitz 2 takes your love for basketball to a whole new level!
+    Step into the action and feel the thrill as you flick your shots with pinpoint precision, aiming to swish every single one.
+    Easy to pick up but challenging to master, this game demands lightning reflexes and flawless accuracy.
+    Think you’ve got what it takes to be the ultimate shooter? Jump in and prove your skills in this pulse-pounding basketball showdown!
+    `,
+    releaseDate: "2024-10",
+    source: "https://www.crazygames.com/game/basket-blitz",
+    tags: ["Sports", "Mobile", "3D", "Basketball", "Minigames", "Mouse", "Arcade"],
     iframeHtml: `<iframe
-      src="https://games.com/embed/zombie-survival"
-      width="100%"
-      height="100%"
+      referrerpolicy="no-referrer"
+      src="https://www.crazygames.com/embed/basket-blitz"
+      style="width: 100%; height: 100%;"
       frameborder="0"
       allowfullscreen
-      title="Zombie Survival">
+      allow="gamepad *;"
+      title="Basket Blitz 2">
     </iframe>`,
-    metaTitle: "Zombie Survival - Survive the Zombie Apocalypse | Casual Games",
-    metaDescription: "Survive the zombie apocalypse in this intense action game. Play for free now!",
-    slug: "zombie-survival",
-    alternativeText: "Zombie Survival game featuring a zombie apocalypse",
+    how_to_play: `
+    <ol>
+      <li><strong>1. Swipe to Shoot:</strong> Flick the basketball toward the hoop by swiping up.</li>
+      <li><strong>2. Aim for Swishes:</strong> Try to make the ball go through the hoop without touching the rim to achieve a “Swish.” Each Swish resets the timer and adds more time.</li>
+      <li><strong>3. Build Combos:</strong> Make consecutive Swishes to trigger combos and boost your score.</li>
+      <li><strong>4. Keep the Streak Going:</strong> As time ticks down, focus on accurate shots to keep your streak and score climbing.</li>
+      <li><strong>5. Watch for the Blue Glow:</strong> A neon blue glow will appear around the ball for each Swish. Aim for as many as possible to rack up points!</li>
+    </ol>
+    <br />
+    <p>Get ready to swipe, score, and see how long you can keep the streak alive!</p>
+    `,
+    metaTitle: "Basket Blitz 2 - Free Basketball Game Online | Casual Games",
+    slug: "basket-blitz",
+    alternativeText: "Basket Blitz 2 - Free Basketball Game Online | Casual Games",
   },
   {
-    id: "match-3-mania",
-    title: "Match 3 Mania",
-    thumbnail: "https://picsum.photos/seed/game6/400/300",
-    category: "Puzzle",
-    rating: 4.6,
-    plays: 250000,
-    description: "Match colorful gems in this addictive puzzle game.",
-    featured: false,
-    releaseDate: "2024-01-25",
-    tags: ["Puzzle", "Educational", "Single-player"],
-    is_new: false,
-    iframeHtml: `<iframe id="if-fg-frame-" title="Nuts And Bolts Screw Puzzle" src="//html5.gamedistribution.com/5116a63fee654a77b8aa0d4769439a2c/?gd_sdk_referrer_url=https%3A%2F%2Fwww.contezero.com%2Fgames%2Fpuzzle%2Fnuts-and-bolts-screw-puzzle%2Fplay%3Afull" width="100%" height="100%" frameborder="0" scrolling="none" allowfullscreen></iframe>`,
-    metaTitle: "Match 3 Mania - Match Colorful Gems in Addictive Puzzle Game | Casual Games",
-    metaDescription: "Match colorful gems in this addictive puzzle game. Play for free now!",
-    slug: "match-3-mania",
-    alternativeText: "Match 3 Mania game featuring colorful gems",
+    id: "heroes-of-match-3",
+    title: "Heroes of Match 3",
+    thumbnail: "https://images.crazygames.com/heroes-of-match-3_16x9/20241029084547/heroes-of-match-3_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
+    category: "Match 3",
+    rating: 8.3,
+    plays: 245,
+    is_new: true,
+    featured: true,
+    description: `
+    Heroes of Match 3 is a thrilling match-3 puzzle game that combines strategic thinking with fast-paced action.
+    In this game, you'll need to match three or more identical tiles to clear the board and progress through the levels.
+    But be careful, as the board is constantly changing and new tiles are added as you progress, making it more challenging to achieve a perfect match.
+    `,
+    releaseDate: "2024-10",
+    source: "https://www.crazygames.com/game/heroes-of-match-3",
+    tags: ["Puzzle", "Mobile", "Battle", "Color", "2D", "Match 3", "Mouse", "Collect", "Mission"],
+    iframeHtml: `<iframe
+      referrerpolicy="no-referrer"
+      src="https://www.crazygames.com/embed/heroes-of-match-3"
+      style="width: 100%; height: 100%;"
+      frameborder="0"
+      allowfullscreen
+      allow="gamepad *;"
+      title="Heroes of Match 3">
+    </iframe>`,
+    how_to_play: `
+    <ol>
+      <li><strong>Match Tiles:</strong> Use your mouse to click and drag tiles to match three or more identical tiles.</li>
+    </ol>
+    <br />
+    <p>Get ready to match tiles and prove your strategic skills!</p>
+    `,
+    metaTitle: "Heroes of Match 3 - Free Match 3 Game Online | Casual Games",
+    slug: "heroes-of-match-3",
+    alternativeText: "Heroes of Match 3 - Free Match 3 Game Online | Casual Games",
+  },
+  {
+    id: "autogun-heroes-izk",
+    title: "Autogun Heroes",
+    thumbnail: "https://images.crazygames.com/autogun-heroes-izk_16x9/20241105014541/autogun-heroes-izk_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
+    category: "Action",
+    rating: 8.8,
+    plays: 10084,
+    is_new: true,
+    featured: true,
+    description: `
+    Autogun Heroes is an action-packed shooting game where you battle waves of enemies with automatic weapons.
+    Upgrade your arsenal, unlock new heroes, and fight your way through increasingly challenging levels.
+    Test your reflexes and strategic thinking in this intense shooter experience!
+    `,
+    releaseDate: "2024-10",
+    source: "https://www.crazygames.com/game/autogun-heroes",
+    tags: ["Action", "Shooting", "2D", "Arcade", "Mouse", "Upgrade", "Battle"],
+    iframeHtml: `<iframe
+      referrerpolicy="no-referrer"
+      src="https://www.crazygames.com/embed/autogun-heroes"
+      style="width: 100%; height: 100%;"
+      frameborder="0"
+      allowfullscreen
+      allow="gamepad *;"
+      title="Autogun Heroes">
+    </iframe>`,
+    how_to_play: `
+    <ol>
+      <li><strong>Mouse Movement:</strong> Move your cursor to aim at enemies</li>
+    </ol>
+    <br />
+    <p>Survive waves of enemies and become the ultimate Autogun Hero!</p>
+    `,
+    metaTitle: "Autogun Heroes - Free Action Shooter Game Online | Casual Games",
+    slug: "autogun-heroes",
+    alternativeText: "Autogun Heroes - Free Action Shooter Game Online | Casual Games",
   },
 ];
 
 export const categories = [
+  "Match 3",
   "Action",
   "Adventure",
   "Arcade",

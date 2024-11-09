@@ -1,5 +1,6 @@
 export function getCategoryIcon(category: string): string {
   const icons: Record<string, string> = {
+    "Match 3": "🍭",
     Action: "🎮",
     Adventure: "🗺️",
     Arcade: "👾",
@@ -13,6 +14,6 @@ export function getCategoryIcon(category: string): string {
     Card: "🃏",
     Board: "🎲",
   };
-
   return icons[category] || "🎮";
 }
+

@@ -63,12 +63,15 @@ export const translations = {
     "category_Simulation": "Simulation",
     "category_Card": "Card",
     "category_Board": "Board",
+    "category_Match 3": "Match 3",
 
     "oops_game_over": "Oops! Game Over",
 
     "featured_games": "Featured Games",
 
     "hot_tag": "🔥 Hot",
+
+    source: "Source",
   },
   es: {
     "popular_games": "Juegos Populares",
@@ -122,6 +125,7 @@ export const translations = {
     "category_Simulation": "Simulación",
     "category_Card": "Cartas",
     "category_Board": "Mesa",
+    "category_Match 3": "Combinar 3",
 
     "no_games_in_category_fun": "¡Parece que todos los juegos de {category} se fueron de vacaciones! 🏖️",
     "no_games_tips": "Mientras reabastecemos la estantería de juegos, ¿por qué no pruebas:",
@@ -134,6 +138,8 @@ export const translations = {
     "featured_games": "Juegos Destacados",
 
     "hot_tag": "🔥 Destacado",
+
+    source: "Fuente",
   },
   zh: {
     "popular_games": "热门游戏",
@@ -187,6 +193,7 @@ export const translations = {
     "category_Simulation": "模拟",
     "category_Card": "卡牌",
     "category_Board": "棋盘",
+    "category_Match 3": "三消游戏",
 
     "no_games_in_category_fun": "{category}分类的游戏都去度假了！🏖️",
     "no_games_tips": "在我们补充游戏的同时，不妨试试：",
@@ -199,6 +206,8 @@ export const translations = {
     "featured_games": "精选游戏",
 
     "hot_tag": "🔥 热门",
+
+    source: "来源",
   },
   ja: {
     "popular_games": "人気ゲーム",
@@ -252,6 +261,7 @@ export const translations = {
     "category_Simulation": "シミュレーション",
     "category_Card": "カード",
     "category_Board": "ボード",
+    "category_Match 3": "マッチ3",
 
     "no_games_in_category_fun": "{category}のゲームは全て休暇中のようです！🏖️",
     "no_games_tips": "ゲームを追加している間に、こちらはいかがでしょうか：",
@@ -264,6 +274,8 @@ export const translations = {
     "featured_games": "注目のゲーム",
 
     "hot_tag": "🔥 人気",
+
+    source: "ソース",
   },
   fr: {
     // General
@@ -322,6 +334,7 @@ export const translations = {
     "category_Simulation": "Simulation",
     "category_Card": "Cartes",
     "category_Board": "Plateau",
+    "category_Match 3": "Match 3",
 
     "no_games_in_category_fun": "On dirait que tous les jeux de {category} sont partis en vacances ! 🏖️",
     "no_games_tips": "Pendant que nous réapprovisionnons notre bibliothèque, pourquoi ne pas essayer :",
@@ -334,5 +347,7 @@ export const translations = {
     "featured_games": "Jeux en vedette",
 
     "hot_tag": "🔥 Tendance",
+
+    source: "Source",
   },
 };

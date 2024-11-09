@@ -10,7 +10,9 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
 export async function loader() {
-  const featuredGames = games.filter((game) => game.featured).slice(0, 3);
+  const featuredGames = games.filter((game) => game.featured)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 4);
   return json({ featuredGames });
 }
 
