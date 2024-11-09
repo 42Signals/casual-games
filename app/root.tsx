@@ -87,6 +87,7 @@ function Layout() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="google-adsense-account" content="ca-pub-5521936089463799"></meta>
         <Meta />
         <Links />
         <script dangerouslySetInnerHTML={{ __html: `
@@ -99,6 +100,10 @@ function Layout() {
 
             gtag('config', 'G-RWEPYVZY69');
           </script>
+        ` }} />
+        <script dangerouslySetInnerHTML={{ __html: `
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5521936089463799"
+            crossorigin="anonymous"></script>
         ` }} />
       </head>
       <body className="bg-gray-50 dark:bg-gray-900">
