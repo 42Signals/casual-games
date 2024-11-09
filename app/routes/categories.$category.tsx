@@ -16,7 +16,9 @@ export const meta: MetaFunction = ({ location }) => {
     { property: "og:title", content: "Casual Games - Play Free Online Casual Games" },
     { property: "og:description", content: "Play the best free online casual games. Discover match 3, action, puzzle, racing, sports, shooting, card, board, RPG and strategy games. New games added daily!" },
     { property: "og:type", content: "website" },
+    { property: "og:image", content: "https://casualgames.studio/images/logo.jpeg" },
     { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:image", content: "https://casualgames.studio/images/logo.jpeg" },
     { rel: "canonical", href: canonicalUrl },
     { name: "language", content: language || "en" },
   ];

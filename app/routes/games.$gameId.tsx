@@ -35,6 +35,7 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
     { property: "og:description", content: game.metaDescription || game.description },
     { property: "og:image", content: game.thumbnail },
     { property: "og:type", content: "game" },
+    { property: "og:image", content: game.thumbnail },
     // Twitter tags
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: game.metaTitle || game.title },
