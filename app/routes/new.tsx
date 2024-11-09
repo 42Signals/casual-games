@@ -1,9 +1,25 @@
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { MetaFunction, useLoaderData } from "@remix-run/react";
 import { GameCard } from "~/components/GameCard";
 import { games } from "~/data/games";
 import { BannerAd } from "~/components/BannerAd";
 import { useLanguage } from "~/contexts/LanguageContext";
+
+export const meta: MetaFunction = ({ location }) => {
+  const canonicalUrl = `https://casualgames.studio${location.pathname}`;
+  const { language } = useLanguage();
+  return [
+    { title: "Casual Games - Play Free Online Casual Games" },
+    { name: "description", content: "Play the best free online casual games. Discover match 3, action, puzzle, racing, sports, shooting, card, board, RPG and strategy games. New games added daily!" },
+    { name: "keywords", content: "casual, online, free, puzzle, action, racing, match 3, arcade, sports, shooting, card, board, RPG, strategy" },
+    { property: "og:title", content: "Casual Games - Play Free Online Casual Games" },
+    { property: "og:description", content: "Play the best free online casual games. Discover match 3, action, puzzle, racing, sports, shooting, card, board, RPG and strategy games. New games added daily!" },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { rel: "canonical", href: canonicalUrl },
+    { name: "language", content: language || "en" },
+  ];
+};
 
 export async function loader() {
   const newGames = games.filter((game) => game.is_new);

@@ -18,15 +18,19 @@ import "./tailwind.css";
 
 export const links: LinksFunction = () => [];
 
-export const meta: MetaFunction = () => {
+export const meta: MetaFunction = ({ location }) => {
+  const canonicalUrl = `https://casualgames.studio${location.pathname}`;
+  const { language } = useLanguage();
   return [
     { title: "Casual Games - Play Free Online Casual Games" },
-    { name: "description", content: "Play the best free online casual games. Discover Match 3, action, puzzle, racing, and strategy games. New games added daily!" },
-    { name: "keywords", content: "casual games, online games, free games, puzzle games, action games, racing games, match 3 games" },
+    { name: "description", content: "Play the best free online casual games. Discover match 3, action, puzzle, racing, sports, shooting, card, board, RPG and strategy games. New games added daily!" },
+    { name: "keywords", content: "casual, online, free, puzzle, action, racing, match 3, arcade, sports, shooting, card, board, RPG, strategy" },
     { property: "og:title", content: "Casual Games - Play Free Online Casual Games" },
-    { property: "og:description", content: "Play the best free online casual games. Discover Match 3, action, puzzle, racing, and strategy games. New games added daily!" },
+    { property: "og:description", content: "Play the best free online casual games. Discover match 3, action, puzzle, racing, sports, shooting, card, board, RPG and strategy games. New games added daily!" },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
+    { rel: "canonical", href: canonicalUrl },
+    { name: "language", content: language || "en" },
   ];
 };
 
@@ -123,8 +127,9 @@ function Layout() {
               <a href="/" className="flex items-center gap-3 group">
                 <span className="text-3xl group-hover:-rotate-12 transition-transform duration-300">🎮</span>
                 <span className="text-xl font-bold text-white/90 sm:text-2xl">
-                  Casual
-                  <span className="text-teal-100"> Games </span>
+                  <h1>Casual
+                    <span className="text-teal-100"> Games </span>
+                  </h1>
                 </span>
               </a>
             </div>

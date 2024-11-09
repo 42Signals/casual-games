@@ -8,6 +8,7 @@ import type { Game } from "~/data/games";
 import { getRecentlyPlayed } from "~/utils/localStorage";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { ShareButtons } from "~/components/ShareButtons";
 
 export async function loader() {
   const featuredGames = games.filter((game) => game.featured)
@@ -31,11 +32,28 @@ export default function Index() {
 
   return (
     <div className="p-6">
+      {/* <div className="mb-8 flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          {t("popular_games")}
+        </h1>
+        <ShareButtons
+          title="Casual Games - Play Free Online Games"
+          description="Play the best free online casual games. New games added daily!"
+        />
+      </div> */}
+
       {recentlyPlayed.length > 0 && (
         <section className="mb-12">
-          <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
-            {t("recently_played")}
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+              {t("recently_played")}
+            </h2>
+            <ShareButtons
+            title="Casual Games - Play Free Online Games"
+              description="Play the best free online casual games. New games added daily!"
+            />
+          </div>
+
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
             {recentlyPlayed.map((game) => (
               <RecentGameCard key={game.id} game={game} />

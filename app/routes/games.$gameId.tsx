@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { games } from "~/data/games";
 import { addToRecentlyPlayed } from "~/utils/localStorage";
 import { useLanguage } from "~/contexts/LanguageContext";
+import { ShareButtons } from "~/components/ShareButtons";
 
 export const loader: LoaderFunction = async ({ params }) => {
   const game = games.find((g) => g.id === params.gameId);
@@ -23,6 +24,7 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
 
   const { game } = data;
   const canonicalUrl = `https://casualgames.studio${location.pathname}`;
+  const { language } = useLanguage();
 
   return [
     { title: game.metaTitle || `${game.title} - Play Online | Casual Games` },
@@ -39,7 +41,7 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
     { name: "twitter:description", content: game.metaDescription || game.description },
     { name: "twitter:image", content: game.thumbnail },
     { rel: "canonical", href: canonicalUrl },
-    { name: "language", content: "en" },
+    { name: "language", content: language || "en" },
     { property: "article:published_time", content: game.releaseDate },
   ];
 };
@@ -117,7 +119,7 @@ export default function GamePage() {
         }}
       />
 
-      <nav className="mb-4 text-base" aria-label="Breadcrumb">
+      <nav className="mb-2 text-base" aria-label="Breadcrumb">
         <ol className="flex items-center space-x-2">
           {/* <li>
             <a href="/" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
@@ -136,6 +138,16 @@ export default function GamePage() {
           </li>
         </ol>
       </nav>
+
+      <div className="mb-4 flex items-center justify-between">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          {game.title}
+        </h1>
+        <ShareButtons
+          title={game.title}
+          description={game.description}
+        />
+      </div>
 
       <div className="mb-8">
         <div
