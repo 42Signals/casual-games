@@ -119,7 +119,7 @@ export default function GamePage() {
         }}
       />
 
-      <nav className="mb-2 text-base" aria-label="Breadcrumb">
+      <nav className="mb-2 text-base hidden" aria-label="Breadcrumb">
         <ol className="flex items-center space-x-2">
           {/* <li>
             <a href="/" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
