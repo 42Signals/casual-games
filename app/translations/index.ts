@@ -71,7 +71,9 @@ export const translations = {
 
     "hot_tag": "🔥 Hot",
 
-    source: "Source",
+    "source": "Source",
+
+    "gameplay_videos": "Gameplay Videos",
   },
   es: {
     "popular_games": "Juegos Populares",
@@ -139,7 +141,9 @@ export const translations = {
 
     "hot_tag": "🔥 Destacado",
 
-    source: "Fuente",
+    "source": "Fuente",
+
+    "gameplay_videos": "Videos de Juego",
   },
   zh: {
     "popular_games": "热门游戏",
@@ -207,7 +211,9 @@ export const translations = {
 
     "hot_tag": "🔥 热门",
 
-    source: "来源",
+    "source": "来源",
+
+    "gameplay_videos": "游戏玩法视频",
   },
   ja: {
     "popular_games": "人気ゲーム",
@@ -275,7 +281,9 @@ export const translations = {
 
     "hot_tag": "🔥 人気",
 
-    source: "ソース",
+    "source": "ソース",
+
+    "gameplay_videos": "ゲームプレイビデオ",
   },
   fr: {
     // General
@@ -348,6 +356,8 @@ export const translations = {
 
     "hot_tag": "🔥 Tendance",
 
-    source: "Source",
+    "source": "Source",
+
+    "gameplay_videos": "Vidéos de Jeu",
   },
 };

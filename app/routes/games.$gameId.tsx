@@ -1,17 +1,21 @@
 import { json, type LoaderFunction, type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useEffect } from "react";
-import { games } from "~/data/games";
+import { games, type Game } from "~/data/games";
 import { addToRecentlyPlayed } from "~/utils/localStorage";
 import { useLanguage } from "~/contexts/LanguageContext";
 import { ShareButtons } from "~/components/ShareButtons";
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = async ({ params, request }) => {
   const game = games.find((g) => g.id === params.gameId);
   if (!game) {
     throw new Response("Game not found", { status: 404 });
   }
-  return json({ game });
+
+  // Get language from cookie or default to 'en'
+  const language = request.headers.get('Accept-Language')?.split(',')[0] || 'en';
+
+  return json({ game, language });
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
@@ -22,9 +26,8 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
     ];
   }
 
-  const { game } = data;
+  const { game, language } = data;
   const canonicalUrl = `https://casualgames.studio${location.pathname}`;
-  const { language } = useLanguage();
 
   return [
     { title: game.metaTitle || `${game.title} - Play Online | Casual Games` },
@@ -33,7 +36,6 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
     // OpenGraph tags
     { property: "og:title", content: game.metaTitle || game.title },
     { property: "og:description", content: game.metaDescription || game.description },
-    { property: "og:image", content: game.thumbnail },
     { property: "og:type", content: "game" },
     { property: "og:image", content: game.thumbnail },
     // Twitter tags
@@ -42,7 +44,7 @@ export const meta: MetaFunction<typeof loader> = ({ data, location }) => {
     { name: "twitter:description", content: game.metaDescription || game.description },
     { name: "twitter:image", content: game.thumbnail },
     { rel: "canonical", href: canonicalUrl },
-    { name: "language", content: language || "en" },
+    { name: "language", content: language },
     { property: "article:published_time", content: game.releaseDate },
   ];
 };
@@ -161,7 +163,7 @@ export default function GamePage() {
       <div className="grid gap-8 md:grid-cols-2">
         <section className="rounded-xl bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 p-8 shadow-xl ring-1 ring-black/5 dark:ring-white/10 transition-transform hover:scale-[1.01]">
           <h2 className="mb-6 text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-            {t("how_to_play")}
+            {t("how_to_play")} {game.title}
           </h2>
           <div
             className="prose prose-sm dark:prose-invert"
@@ -212,11 +214,6 @@ export default function GamePage() {
             </div>
 
             <div>
-              <h3 className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("total_plays")}</h3>
-              <p className="mt-1 text-gray-900 dark:text-gray-100 font-medium">{game.plays.toLocaleString()}</p>
-            </div>
-
-            <div>
               <h3 className="text-sm font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">{t("tags")}</h3>
               <div className="mt-2 flex flex-wrap gap-2">
                 {game.tags.map((tag: string) => (
@@ -232,6 +229,38 @@ export default function GamePage() {
           </div>
         </section>
       </div>
+
+      {game.videos && game.videos.length > 0 && (
+        <section className="mt-12">
+          <h2 className="mb-6 text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
+            {t("gameplay_videos")}
+          </h2>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {game.videos.map((video: Game['videos'][number], index: number) => (
+              <div
+                key={index}
+                className="rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-xl ring-1 ring-black/5 dark:ring-white/10"
+              >
+                <div className="aspect-video w-full">
+                  <iframe
+                    src={video.url}
+                    title={video.title}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">
+                    {video.title}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

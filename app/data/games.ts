@@ -4,7 +4,6 @@ export interface Game {
   thumbnail: string;
   category: string;
   rating: number;
-  plays: number;
   is_new: boolean;
   featured: boolean;
   description: string;
@@ -27,6 +26,11 @@ export interface Game {
     numberOfPlayers: string;
     datePublished: string;
   };
+  videos?: {
+    title: string;
+    url: string;
+    thumbnail?: string;
+  }[];
 }
 
 export const games: Game[] = [
@@ -36,7 +40,6 @@ export const games: Game[] = [
     thumbnail: "https://images.crazygames.com/worldguessr_16x9/20241018082520/worldguessr_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     category: "Puzzle",
     rating: 8.5,
-    plays: 32044,
     is_new: true,
     featured: true,
     description: `
@@ -78,6 +81,18 @@ export const games: Game[] = [
     metaTitle: "WorldGuessr Free GeoGuessr Online | Casual Games",
     slug: "worldguessr",
     alternativeText: "WorldGuessr Free GeoGuessr Online | Casual Games",
+    videos: [
+      {
+        title: "WorldGuessr Gameplay Tutorial",
+        url: "https://www.youtube.com/embed/abc123",
+        thumbnail: "https://img.youtube.com/vi/abc123/maxresdefault.jpg"
+      },
+      {
+        title: "Pro Tips & Tricks",
+        url: "https://www.youtube.com/embed/xyz789",
+        thumbnail: "https://img.youtube.com/vi/xyz789/maxresdefault.jpg"
+      }
+    ]
   },
   {
     id: "basket-blitz",
@@ -85,7 +100,6 @@ export const games: Game[] = [
     thumbnail: "https://images.crazygames.com/basket-blitz_16x9/20241031102002/basket-blitz_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     category: "Sports",
     rating: 8.6,
-    plays: 8497,
     is_new: true,
     featured: true,
     description: `
@@ -127,7 +141,6 @@ export const games: Game[] = [
     thumbnail: "https://images.crazygames.com/heroes-of-match-3_16x9/20241029084547/heroes-of-match-3_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     category: "Match 3",
     rating: 8.3,
-    plays: 245,
     is_new: true,
     featured: true,
     description: `
@@ -164,7 +177,6 @@ export const games: Game[] = [
     thumbnail: "https://images.crazygames.com/autogun-heroes-izk_16x9/20241105014541/autogun-heroes-izk_16x9-cover?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop",
     category: "Action",
     rating: 8.8,
-    plays: 10084,
     is_new: true,
     featured: true,
     description: `

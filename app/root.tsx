@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  Link,
 } from "@remix-run/react";
 import { Sidebar } from "./components/Sidebar";
 import { useState, useEffect } from "react";
@@ -56,7 +57,14 @@ function SearchResults() {
         {searchResults.length > 0 ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {searchResults.map((game) => (
-              <GameCard key={game.id} game={game} />
+              <Link
+                key={game.id}
+                to={`/games/${game.id}`}
+                prefetch="intent"
+                className="block transition-transform hover:scale-105"
+              >
+                <GameCard game={game} />
+              </Link>
             ))}
           </div>
         ) : (
